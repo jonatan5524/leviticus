@@ -3,6 +3,7 @@ import { Typography, Button, Grid } from '@mui/material';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SiteList from '../components/SiteList';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -35,6 +36,17 @@ export default function Root() {
         alignItems='center'
         spacing={3}
       >
+        <Link to='/'>
+        <Button
+                style={{ width: 150, height: 50, borderRadius: 15 }}
+                size='large'
+                variant='contained'
+                color='primary'
+                fullWidth
+              >
+                Home
+              </Button>
+        </Link>
         <Grid item>
           <Typography variant='h4' align='center'>
             {from}

@@ -17,7 +17,7 @@ const useStyles = makeStyles(() =>
     logo: {
       maxWidth: 40,
       marginRight: '10px',
-    },
+         },
   })
 );
 

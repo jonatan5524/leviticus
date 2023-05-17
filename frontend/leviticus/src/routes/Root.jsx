@@ -33,7 +33,7 @@ export default function Root({ categories }) {
           <Grid item key={index}>
             <Link to='/category' state={{ from: category }}>
               <Button
-                style={{ width: 150, height: 50 }}
+                style={{ width: 150, height: 50, borderRadius: 15}}
                 size='large'
                 variant='contained'
                 color='primary'

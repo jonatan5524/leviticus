@@ -4,6 +4,7 @@ import Root from './routes/root';
 import Category from './routes/Category';
 import { categories } from './api/categories';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import logo from './assets/policeLogo.png';
 
 const router = createBrowserRouter([
   {
@@ -26,9 +27,20 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh',
-        }}
+         }}
       >
+        <img src={logo} alt="Logo" style={{
+          height: '30vh',
+          width: '20vw',
+          opacity: '0.5'
+        }} />
+        
         <RouterProvider router={router} />
+        <img src={logo} alt="Logo" style={{
+          height: '30vh',
+          width: '20vw',
+          opacity: '0.5'
+        }} />
       </div>
     </>
   );
