@@ -1,24 +1,50 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import React from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
+import logo from '../assets/policeLogo.png';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    title: {
+      flexGrow: 1,
+      textAlign: 'center',
+    },
+    logo: {
+      maxWidth: 40,
+      marginRight: '10px',
+    },
+  })
+);
 
 export default function MyAppBar() {
+  const classes = useStyles();
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+    <div>
+      <AppBar>
+        <Toolbar>
+          {/* <IconButton
+            edge='start'
+            className={classes.menuButton}
+            color='inherit'
+            aria-label='menu'
+          >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Photos
+          </IconButton> */}
+          <img src={logo} alt='Leviticus' className={classes.logo} />
+          <Typography variant='h6' className={classes.title}>
+            Leviticus
           </Typography>
         </Toolbar>
       </AppBar>
-    </Box>
+    </div>
   );
 }
