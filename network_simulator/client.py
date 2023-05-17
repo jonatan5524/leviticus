@@ -1,21 +1,20 @@
+#!/usr/bin/env python
+
 import sys
 import random
 import requests
 from time import sleep
 
 NORMAL_HOSTS = [
-    "10.0.0.3",
-    "10.0.0.6",
-    "10.0.0.7",
+    "10.0.2.48",
+    "10.0.2.123",
+    "10.0.2.89",
 ]
-
 
 ILLEGAL_HOSTS = [
-    "10.0.0.10",
-    "10.0.0.11",
-    "10.0.0.12",
+    "10.0.2.57",
+    "10.0.2.32",
 ]
-
 
 def send_request(hosts):
     host = random.choice(hosts)
@@ -47,19 +46,19 @@ def print_help():
 
 
 def main():
-    if len(sys.argv) == 0:
+    if len(sys.argv) == 1:
         print("no arguements provided")
         print_help()
         exit(1)
 
-    role = sys.argv[0]
-    if role not in ("normal", "addict") or (role == "addict" and len(sys.argv) == 1):
+    role = sys.argv[1]
+    if role not in ("normal", "addict") or (role == "addict" and len(sys.argv) == 2):
         print_help()
         exit(1)
 
     if role == "addict":
         try:
-            illegal_host_indices = [int(i) for i in sys.argv[1:]]
+            illegal_host_indices = [int(i) for i in sys.argv[2:]]
         except ValueError:
             print("indices should be numbers")
             print_help()
@@ -67,3 +66,6 @@ def main():
         addict_routine(illegal_host_indices)
     else:
         normal_routine()
+
+if __name__ == "__main__":
+    main()
