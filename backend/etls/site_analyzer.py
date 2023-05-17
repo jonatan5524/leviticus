@@ -38,15 +38,14 @@ class siteAnalyzer:
             "score", F.sqrt((1 - F.col("df-normalized")) * F.col("tf-normalized"))
         )
 
-        self._res = self._connections.groupby(
-            (F.col("score") * 100).cast("integer")
-        ).count()
-
-        self._connections.show(20, False)
-        self._res.show(100, False)
+        self._res = (
+            self._connections.filter(F.col("score") > 0.5).select("destIp").distinct()
+        )
 
     def _load(self):
-        pass
+        self._res.write.mode("overwrite").parquet(
+            "oci://bucket-20230517-1923@idydrpfy5bgb/site_analyzer.parquet"
+        )
 
 
 def main():
