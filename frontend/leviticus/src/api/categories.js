@@ -2,5 +2,5 @@ export const categories = [
 	"Drugs",
 	"Gambling",
 	"Pedophilia",
-	"prostitution"
+	"Prostitution"
 ]

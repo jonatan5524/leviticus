@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typography, Button, Grid } from '@mui/material';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() =>
   createStyles({

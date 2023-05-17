@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Typography, Button, Grid } from '@mui/material';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import SiteList from '../components/SiteList';
 import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles(() =>
@@ -38,6 +39,7 @@ export default function Root() {
           <Typography variant='h4' align='center'>
             {from}
           </Typography>
+          <SiteList />
         </Grid>
       </Grid>
     </>
