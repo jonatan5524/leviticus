@@ -5,11 +5,14 @@ from pyspark.sql import SparkSession
 
 class siteAnalyzer:
     def _extract(self):
-        self._connections = SparkSession.builder.getOrCreate().read.parquet(
-            "oci://bucket-20230517-1923@idydrpfy5bgb/connections.parquet"
+        self._connections = SparkSession.builder.getOrCreate().read.csv(
+            r"oci://bucket-20230517-1923@idydrpfy5bgb/*/*/*[.]data[.]gz", sep="\t"
         )
 
     def _transform(self):
+        self._connections.show(30, False)
+        exit(1)
+
         self._connections = self._connections.withColumn(
             "tf-normalized",
             F.size(
@@ -43,7 +46,7 @@ class siteAnalyzer:
         )
 
         self._res = self._res.select(
-            F.col("SourceIp").alias("site"), F.lit("Gambling").alias("category")
+            F.col("DestIp").alias("site"), F.lit("Gambling").alias("category")
         )
 
     def _load(self):
