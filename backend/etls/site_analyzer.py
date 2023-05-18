@@ -42,10 +42,17 @@ class siteAnalyzer:
             self._connections.filter(F.col("score") > 0.5).select("destIp").distinct()
         )
 
-    def _load(self):
-        self._res.write.mode("overwrite").parquet(
-            "oci://bucket-20230517-1923@idydrpfy5bgb/site_analyzer.parquet"
+        self._res = self._res.select(
+            F.col("SourceIp").alias("site"), F.lit("Gambling").alias("category")
         )
+
+    def _load(self):
+        self._res.write.format("oracle").option(
+            "adbId",
+            "ocid1.autonomousdatabase.oc1.iad.anuwcljri5rgbiaanm4gtavqnr37v4l5kkjzgxyii2iqbsfkpumj7c625qca",
+        ).option("dbtable", "categories").option("user", "Team").option(
+            "password", "P@ssw0rd?"
+        ).save()
 
 
 def main():
