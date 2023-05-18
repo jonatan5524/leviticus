@@ -4,6 +4,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import SiteList from '../components/SiteList';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -18,14 +19,21 @@ export default function Root() {
   const location = useLocation();
   const { from } = location.state;
 
-  const list = [
-    'test1.com',
-    'test2.com',
-    'test3.com',
-    'test4.com',
-    'test5.com',
-    'test6.com',
-  ];
+  const [sites, setSites] = React.useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get(
+        `https://g4d3d36de9bbc09-db1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/categorysites/`
+      )
+      .then(({ data: { items } }) => {
+        const newSites = items
+          .filter(({ category }) => category === from)
+          .map(({ site }) => site);
+
+        setSites(newSites);
+      });
+  }, []);
 
   return (
     <>
@@ -51,7 +59,7 @@ export default function Root() {
           <Typography variant='h4' align='center'>
             {from}
           </Typography>
-          <SiteList />
+          <SiteList list={sites} />
         </Grid>
       </Grid>
     </>

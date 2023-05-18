@@ -2,14 +2,13 @@ import * as React from 'react';
 import MyAppBar from './components/MyAppBar';
 import Root from './routes/root';
 import Category from './routes/Category';
-import { categories } from './api/categories';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import logo from './assets/policeLogo.png';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root categories={categories} />,
+    element: <Root />,
   },
   {
     path: '/category',

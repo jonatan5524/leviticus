@@ -7,15 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 import LanguageIcon from '@mui/icons-material/Language';
 
-export default function SiteList() {
-  const list = [
-    'site1.com',
-    'site2.com',
-    'site3.com',
-    'site4.com',
-    'site5.com',
-  ];
-
+export default function SiteList({ list }) {
   return (
     <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
       <Grid container spacing={2}>
