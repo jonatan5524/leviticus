@@ -51,7 +51,7 @@ class siteAnalyzer:
             "adbId",
             "ocid1.autonomousdatabase.oc1.iad.anuwcljri5rgbiaanm4gtavqnr37v4l5kkjzgxyii2iqbsfkpumj7c625qca",
         ).option("dbtable", "categories").option("user", "Team").option(
-            "password", "P@ssw0rd?"
+            "password", "P@ssw0rd123?"
         ).save()
 
 
